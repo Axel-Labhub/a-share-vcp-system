@@ -19,3 +19,6 @@ Thumbs.db
 *.key
 credentials*
 secrets*
+
+# 参考资料中的大体积原始网页（本地留存，不入库）
+docs/参考资料/*.html
