@@ -1,0 +1,21 @@
+# --- 交易台账与个人记录（复盘生成，不入库） ---
+ledger/
+trading-journal*.csv
+journal*.md
+*台账*.csv
+*台账*.xlsx
+
+# --- 临时与生成物 ---
+tmp/
+temp/
+*.log
+*.tmp
+~$*.xlsx
+.DS_Store
+Thumbs.db
+
+# --- 密钥与凭证（如有数据源 token，绝不入库） ---
+.env
+*.key
+credentials*
+secrets*

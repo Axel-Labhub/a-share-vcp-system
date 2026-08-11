@@ -1,0 +1,71 @@
+examples:
+  - id: daily-scan
+    title:
+      zh: 每日选股扫描
+      en: Daily Stock Scan
+    description:
+      zh: 按体系流程扫描当前主线板块和 VCP 候选股
+      en: Scan current leading sectors and VCP candidates per the system
+    prompt:
+      zh: |-
+        执行交易体系的每日选股扫描：
+        1. 获取当前板块相对强度排名和资金流入情况，锁定主线板块
+        2. 在主线板块内扫描 VCP 形态候选股（收缩幅度递减、量能萎缩、逼近枢轴）
+        3. 输出候选清单：代码/名称/枢轴价/止损价/建议仓位
+        4. 说明今日是否符合开仓条件
+      en: |-
+        Run the daily scan of the trading system:
+        1. Fetch sector relative-strength ranking and capital flow, identify leading sectors
+        2. Scan for VCP candidates within leading sectors (contracting ranges, drying volume, near pivot)
+        3. Output a candidate list: ticker/name/pivot price/stop-loss price/suggested position
+        4. State whether today's conditions allow new entries
+  - id: position-review
+    title:
+      zh: 持仓检查
+      en: Position Check
+    description:
+      zh: 按止损止盈规则检查当前持仓该买该卖
+      en: Check holdings against stop-loss and take-profit rules
+    prompt:
+      zh: |-
+        检查我的持仓（{{股票代码列表，逗号分隔}}）：
+        1. 逐只对照止损规则（跌破枢轴/8%或12%硬止损，收盘确认）和止盈规则（20日线、放量滞涨）
+        2. 给出每只的明确动作：持有 / 止损卖出 / 止盈卖出 / 加仓
+        3. 标注建议动作的理由和关键价位
+      en: |-
+        Check my positions ({{ticker list, comma separated}}):
+        1. Apply stop-loss rules (below pivot / 8% or 12% hard stop, close-confirmed) and take-profit rules (20-day line, volume climax) to each
+        2. Give a clear action per holding: hold / stop out / take profit / add
+        3. Note the reason and key price levels for each action
+  - id: weekly-review
+    title:
+      zh: 每周复盘
+      en: Weekly Review
+    description:
+      zh: 复盘本周交易执行情况，对照纪律清单打分
+      en: Review weekly trades against the discipline checklist
+    prompt:
+      zh: |-
+        执行每周复盘：
+        1. 回顾本周所有交易（买卖点、止损止盈执行情况）
+        2. 对照纪律清单逐条打分（不摊平/收盘确认/不追高/3%刹车/只跟随信号）
+        3. 统计本周胜率、盈亏、最大回撤，连亏 3 笔则提示降档
+        4. 更新下周主线板块判断
+      en: |-
+        Run the weekly review:
+        1. Review all trades this week (entries/exits, stop-loss and take-profit execution)
+        2. Score against the discipline checklist item by item
+        3. Compute win rate, P&L, max drawdown; flag downgrade if 3 consecutive losses
+        4. Update the leading-sector view for next week
+  - id: system-params
+    title:
+      zh: 体系参数说明
+      en: System Parameters
+    description:
+      zh: 查看交易体系全部参数与决策依据
+      en: View all system parameters and decision rationale
+    prompt:
+      zh: |-
+        展示交易体系的参数总表和执行规则，包括：市场过滤、选股、买点、止损、止盈、资金管理、复盘流程，以及各参数的选择依据和延后口子。
+      en: |-
+        Show the trading system's parameter table and execution rules: market filter, stock selection, entry, stop-loss, take-profit, position sizing, review process, plus the rationale and deferred items.
