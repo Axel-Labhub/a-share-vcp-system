@@ -71,8 +71,12 @@ $idx = 0
 foreach ($e in $ranked) {
     $idx++
     $mark = ''
-    if ($idx -le 3) { $top3 += $e.Key; $mark = '  <-- LEADING' }
+    if ($idx -le 3 -and $e.Value -gt 0) { $top3 += $e.Key; $mark = '  <-- LEADING' }
+    elseif ($idx -le 3) { $mark = '  (negative RS, excluded)' }
     Write-Output ("{0,-10} {1,8:P2}{2}" -f $e.Key, $e.Value, $mark)
+}
+if ($top3.Count -eq 0) {
+    Write-Output 'NO LEADING SECTOR: all top-3 RS negative -> no new positions today (v1.2 rule).'
 }
 
 # ---- VCP scan in leading sectors ----
