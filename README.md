@@ -7,6 +7,7 @@
 **扩散收敛法共建 · 纸面回测验证 · 实盘信号已落地 · 开箱即用**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![版本](https://img.shields.io/badge/版本-v1.5-blueviolet)]()
 [![回测胜率](https://img.shields.io/badge/回测胜率-54.5%25-brightgreen)]()
 [![盈亏比](https://img.shields.io/badge/盈亏比-2.67-orange)]()
 [![单笔期望](https://img.shields.io/badge/单笔期望-%2B5.22%25-red)]()
@@ -83,7 +84,17 @@
 | 资金管理 | 单笔风险 1.5–2%，单笔仓位 ≤25%，最多 5–6 只，单板块 ≤3 只 |
 | 风控刹车 | 单日回撤 3% 停开新仓；连亏 3 笔降档运行 |
 
-完整决策依据、被否决的方案、延后口子 → [`skills/a-share-vcp-system/rules.md`](skills/a-share-vcp-system/rules.md)
+完整决策依据、被否决的方案、延后口子 → [`skills/a-share-vcp-system/references/rules.md`](skills/a-share-vcp-system/references/rules.md)
+
+### v1.5 新增：两层 RS 方案与确定性硬门槛
+
+板块指数行情无法直查时，用代表股代理板块强度。针对「单只妖股绑架板块排名」的失真问题（实测案例：医药板块代理涨幅 +7.42% 全靠药明康德 +30.3%，恒瑞实为 −10.7%），v1.5 引入三条确定性硬门槛，由 `skills/a-share-vcp-system/scripts/rs_calc.py` 自动判定，禁止人工覆盖：
+
+1. **一致性 ≥ 50%**：代表股中 20 日涨幅为正的比例过半（真主线是群体上涨）
+2. **代理 RS > 0**：代理涨幅（中位数）超过基准指数
+3. **5 日动量中位数 ≥ −3%**：短期资金未撤离
+
+回放验证：医药/机器人/光伏三个被单股绑架的假主线全部被自动拦截，无需人工解读简报。
 
 ---
 
@@ -112,7 +123,14 @@ cp -r skills/a-share-vcp-system ~/.claude/skills/       # Claude Code
 ## 仓库地图
 
 ```
-skills/a-share-vcp-system/   # 技能本体：执行手册 + 参数手册 + 推荐查询
+skills/a-share-vcp-system/   # 技能本体（v1.5）
+  ├── SKILL.md               # 执行手册：数据源路由 + 四个命令（扫描/持仓检查/复盘/参数总表）
+  ├── references/rules.md    # 参数总表、决策依据、回测记录、数据源实测限制
+  └── scripts/
+      ├── rs_calc.py         # 板块代理RS批量计算（中位数+一致性+5日动量，三条硬门槛）
+      └── vcp_calc.py        # 个股VCP确定性计算（MA20/枢轴/量比/收缩/止损位/参考仓位）
+reports/                     # 每日选股扫描报告存档
+sector-notes/                # 板块复核与收盘简报（二线复核材料）
 dist/                        # .skill 安装包（可直接安装）
 docs/
   ├── 交易体系构建-手稿.md    # 扩散收敛对话的完整结晶（八条决策全记录）
