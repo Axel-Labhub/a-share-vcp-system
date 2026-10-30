@@ -91,7 +91,7 @@
       </div>
       <p class="fine-print rule-limits">≥70 分最多精挑 3 只，不足不凑数；评分不是收益概率。固定三段波幅和 MA50 只是可复核的 VCP / 趋势代理，不是完整人工形态或 150/200 日趋势模板。</p>
     </section>
-    <section class="connection-note" aria-label="刷新限制说明"><strong id="bridgeDetail">部署快照带原始扫描日期，正在尝试只读同步。</strong><p>行情仅在页面打开且联网时每 30 秒尝试获取；浏览器后台可能限频，恢复可见会重新读取。只读状态 API 与本页同源，读取时间仅代表成功同步响应；扫描批次、台账文件和供应方报价分别按各自源时间显示。云端运行环境休眠/停止会影响读取，其他电脑的扫描需先同步至此项目副本。连接失败会明确降级，不会伪造实时数据。</p></section>
+    <section class="connection-note" aria-label="刷新限制说明"><strong id="bridgeDetail">静态公开快照：扫描和纸面数据不与后台自动同步。</strong><p>本页由 GitHub Pages 静态托管。扫描与纸面状态固定为本次发布快照，不自动同步后台文件；快照同步时间沿用原始快照生成时间，与扫描执行时间和打开网页时间不同。手动刷新及 30 秒自动刷新仅尝试获取腾讯公开行情，浏览器后台可能限频；行情按供应方源时间独立判断时效。更新扫描或纸面状态须重新发布快照并重新载入页面，不会把旧扫描或过期报价标成实时。</p></section>
     <footer class="footer"><span>数据同步：<b id="footerBridge">读取中</b></span><span>自动刷新 <b id="countdown">30s</b></span><span>只读研究 · 无后台交易 · 无真实下单</span></footer>
   </main>
 </div>
