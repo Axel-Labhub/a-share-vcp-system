@@ -1,0 +1,224 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-29T19:15:50+08:00",
+  "mode": "deployment_snapshot",
+  "source_label": "本次部署快照",
+  "scan": {
+    "status": "ok",
+    "report_name": "VCP自动扫描-2026-10-29-163030.md",
+    "scan_time": "2026-10-29T16:30:00+08:00",
+    "data_date": "2026-10-29",
+    "report_updated_at": "2026-10-29T16:31:29+08:00",
+    "source": "腾讯个股前复权日线 / 上证日线",
+    "pool_count": 194,
+    "group_count": 29,
+    "passed_count": 0,
+    "selected_count": 0,
+    "benchmark_20d_pct": -7.24,
+    "benchmark_day_pct": -0.82,
+    "market_brake": false,
+    "candidates": [],
+    "distribution": [
+      {
+        "name": "回调",
+        "count": 52
+      },
+      {
+        "name": "收缩中",
+        "count": 1
+      },
+      {
+        "name": "放量逼近",
+        "count": 2
+      },
+      {
+        "name": "破位(收盘<MA20)",
+        "count": 128
+      },
+      {
+        "name": "突破(量能待确认)",
+        "count": 11
+      }
+    ],
+    "rejections": [
+      {
+        "name": "趋势排列/斜率",
+        "count": 173
+      },
+      {
+        "name": "三段顺序收缩",
+        "count": 186
+      },
+      {
+        "name": "成交量递减",
+        "count": 165
+      },
+      {
+        "name": "个股20日RS非正",
+        "count": 106
+      },
+      {
+        "name": "枢轴距离超限",
+        "count": 136
+      },
+      {
+        "name": "评分低于70",
+        "count": 194
+      },
+      {
+        "name": "突破量能未确认",
+        "count": 11
+      }
+    ],
+    "rules_label": "质量硬门槛 + 评分≥70；最多3只，不凑数"
+  },
+  "watchlist": {
+    "updated": "2026-10-24",
+    "items": [
+      {
+        "name": "汇川技术",
+        "symbol": "sz300124",
+        "group": "人形机器人",
+        "status": "人工观察，未按当前日线复核"
+      },
+      {
+        "name": "绿的谐波",
+        "symbol": "sh688017",
+        "group": "人形机器人",
+        "status": "人工观察，未按当前日线复核"
+      },
+      {
+        "name": "新时达",
+        "symbol": "sz002527",
+        "group": "人形机器人",
+        "status": "人工观察，未按当前日线复核"
+      },
+      {
+        "name": "信捷电气",
+        "symbol": "sh603416",
+        "group": "人形机器人",
+        "status": "人工观察，未按当前日线复核"
+      },
+      {
+        "name": "兆威机电",
+        "symbol": "sz003021",
+        "group": "人形机器人",
+        "status": "人工观察，未按当前日线复核"
+      },
+      {
+        "name": "鸣志电器",
+        "symbol": "sh603728",
+        "group": "人形机器人",
+        "status": "人工观察，未按当前日线复核"
+      },
+      {
+        "name": "奥比中光",
+        "symbol": "sh688322",
+        "group": "人形机器人",
+        "status": "人工观察，未按当前日线复核"
+      },
+      {
+        "name": "埃夫特",
+        "symbol": "sh688165",
+        "group": "人形机器人",
+        "status": "人工观察，未按当前日线复核"
+      },
+      {
+        "name": "双环传动",
+        "symbol": "sz002472",
+        "group": "人形机器人",
+        "status": "人工观察，未按当前日线复核"
+      },
+      {
+        "name": "长盈精密",
+        "symbol": "sz300115",
+        "group": "人形机器人",
+        "status": "人工观察，未按当前日线复核"
+      },
+      {
+        "name": "中大力德",
+        "symbol": "sz002896",
+        "group": "人形机器人",
+        "status": "人工观察，未按当前日线复核"
+      },
+      {
+        "name": "赛意信息",
+        "symbol": "sz300687",
+        "group": "人形机器人",
+        "status": "人工观察，未按当前日线复核"
+      },
+      {
+        "name": "恒立液压",
+        "symbol": "sh601100",
+        "group": "人形机器人",
+        "status": "人工观察，未按当前日线复核"
+      },
+      {
+        "name": "拓普集团",
+        "symbol": "sh601689",
+        "group": "人形机器人",
+        "status": "人工观察，未按当前日线复核"
+      },
+      {
+        "name": "雷赛智能",
+        "symbol": "sz002979",
+        "group": "人形机器人",
+        "status": "人工观察，未按当前日线复核"
+      },
+      {
+        "name": "深南电路",
+        "symbol": "sz002916",
+        "group": "AI算力 / ABF",
+        "status": "人工观察，未按当前日线复核"
+      },
+      {
+        "name": "兴森科技",
+        "symbol": "sz002436",
+        "group": "AI算力 / ABF",
+        "status": "人工观察，未按当前日线复核"
+      },
+      {
+        "name": "同飞股份",
+        "symbol": "sz300990",
+        "group": "液冷温控",
+        "status": "人工观察，未按当前日线复核"
+      }
+    ],
+    "notice": "这是历史人工观察清单，不是最新扫描精选；旧价格、旧枢轴与旧标签不作为当前信号。"
+  },
+  "daily_paper": {
+    "state_available": true,
+    "state_updated_at": "2026-10-29T16:31:29+08:00",
+    "last_processed_date": "2026-10-29",
+    "last_run_time": "2026-10-29T16:31:00+08:00",
+    "open_count": 0,
+    "pending_count": 0,
+    "closed_count": 0,
+    "open_positions": []
+  },
+  "intraday_paper": {
+    "state_available": false,
+    "state_updated_at": null,
+    "last_poll": null,
+    "open_count": null,
+    "closed_count": null,
+    "events_count": null,
+    "open_positions": [],
+    "status": "no_verified_state",
+    "notice": "盘中实验与日线纸面台账隔离。无可核验状态不等于正在监控；没有候选且没有在途模拟持仓时不会启动空监控。"
+  },
+  "safety": {
+    "read_only": true,
+    "real_orders": false,
+    "quote_poll_seconds": 30,
+    "stale_after_seconds": 90,
+    "quote_source": "腾讯公开快照（非交易所级、无官方实时 SLA）",
+    "industry_filter": "按用户确认跳过申万筛选"
+  },
+  "schedules": {
+    "daily_scan": "工作日 16:30",
+    "intraday_attempt": "工作日 09:35",
+    "intraday_poll_seconds": 30,
+    "notice": "排程配置不是实例运行证明；休市或没有新鲜完整日线时扫描会安全停止。"
+  }
+}

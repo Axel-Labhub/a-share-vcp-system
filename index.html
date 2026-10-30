@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#07111f">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="VCP 只读研究工作台：严格扫描、公开报价时效与独立纸面状态。">
+  <title>VCP · 交易系统工作台</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="side-nav" aria-label="主导航">
+    <div class="brand"><span class="brand-mark">V</span><span>VCP<br><small>RESEARCH DESK</small></span></div>
+    <nav>
+      <a class="nav-link active" href="#overview"><span class="nav-icon">⌂</span><span>工作台总览</span></a>
+      <a class="nav-link" href="#market"><span class="nav-icon">◒</span><span>市场快照</span></a>
+      <a class="nav-link" href="#scan"><span class="nav-icon">⌁</span><span>扫描报告</span></a>
+      <a class="nav-link" href="#watchlist"><span class="nav-icon">☆</span><span>观察名单</span></a>
+      <a class="nav-link" href="#paper"><span class="nav-icon">▣</span><span>模拟仓位</span></a>
+      <a class="nav-link" href="#rules"><span class="nav-icon">≡</span><span>规则与风险</span></a>
+    </nav>
+    <div class="side-foot"><span class="status-dot good"></span><span>只读研究系统</span><small>不连接券商 · 不下真实单</small></div>
+  </aside>
+  <main class="main-content">
+    <header class="topbar">
+      <div class="mobile-brand"><span class="brand-mark">V</span><strong>VCP</strong></div>
+      <div class="crumb"><span>交易系统</span><b>/</b><strong>工作台</strong></div>
+      <div class="top-actions">
+        <span class="shanghai" id="clock">上海时间 —</span>
+        <span class="badge badge-teal">公开只读</span><span class="badge badge-muted">无真实下单</span>
+        <button class="button button-ghost" id="refreshBtn" type="button"><span class="refresh-icon">↻</span> 手动刷新</button>
+        <label class="switch-label"><input id="autoRefresh" type="checkbox" checked aria-label="每30秒自动刷新"><span class="switch"></span><span>自动 30s</span></label>
+      </div>
+    </header>
+    <section class="notice-bar" aria-label="公开访问与行情边界">
+      <span class="notice-symbol">!</span><div><strong>公开访问，只读观察。</strong> 任何持有链接的人都能访问，仅展示规则与纸面数据。腾讯快照非交易所级、无官方实时 SLA；供应方时间超过 90 秒即过期，不构成投资建议。</div>
+    </section>
+    <div class="page-heading" id="overview">
+      <div><p class="eyebrow">VCP RESEARCH CONSOLE <span id="dataMode">· 部署快照</span></p><h1>等待是纪律<span class="heading-dot">.</span></h1><p class="subtitle">先保护信号质量，再等待真正值得复核的形态。</p></div>
+      <div class="sync-box"><span class="status-dot" id="bridgeDot"></span><span id="bridgeStatus">正在读取数据</span><small>快照同步时间 <b id="snapshotSync">—</b></small><small>在线同步响应 <b id="lastSync">—</b></small><small>扫描源时间 <b id="scanAge">—</b></small></div>
+    </div>
+    <section class="metric-strip" aria-label="扫描核心指标">
+      <div class="metric"><span>严格扫描池</span><strong id="poolCount">—</strong><small><b id="scanGroupCount">—</b> · 完整质量门槛</small></div>
+      <div class="metric"><span>通过硬门槛</span><strong id="passedCount">—</strong><small>趋势、收缩、量能同时满足</small></div>
+      <div class="metric accent"><span>精选 <em id="selectedRatio">— / 3</em></span><strong id="selectedCount">—</strong><small>不凑数，宁缺毋滥</small></div>
+      <div class="metric"><span>最近扫描 · 上海时间</span><strong class="metric-time" id="scanTime">—</strong><small id="scanDate">数据截止 —</small><small id="scanAgeDetail">扫描时间待核验</small></div>
+    </section>
+    <section class="featured-panel panel" aria-labelledby="featured-title">
+      <div class="section-head"><div><p class="kicker">01 / SIGNAL QUALITY</p><h2 id="featured-title">精选候选 <span class="counter" id="featuredRatio">— / 3</span></h2></div><span class="pill pill-wait"><i></i><span id="signalState">等待核验</span></span></div>
+      <div id="candidates" class="empty-state"><div class="empty-orbit">∅</div><div><h3>正在读取最近扫描</h3><p>只展示满足质量门槛的候选，不用观察名单补位。</p></div></div>
+    </section>
+    <div class="content-grid">
+      <section class="panel market-panel" id="market" aria-labelledby="market-title">
+        <div class="section-head"><div><p class="kicker">02 / MARKET PULSE</p><h2 id="market-title">市场快照</h2></div><div class="quote-summary" aria-label="四项指数报价时效"><b id="freshCount">0</b> 新鲜 <b id="staleCount">0</b> 过期 <b id="failedCount">0</b> 异常</div></div>
+        <div class="market-note" id="marketSummary">等待首次行情请求</div><div id="marketGrid" class="market-grid"></div>
+        <p class="fine-print">每 30 秒尝试读取公开快照。工作日连续竞价时段仅为时段估算，未接法定休市日历；旧快照只供回看，不能触发交易。</p>
+      </section>
+      <section class="panel quality-panel" aria-labelledby="quality-title">
+        <div class="section-head"><div><p class="kicker">03 / QUOTE FRESHNESS</p><h2 id="quality-title">报价时效</h2></div><span class="quality-score" id="qualityScore">—</span></div>
+        <p class="market-note" id="qualityScope">包含指数与观察名单</p>
+        <div class="quality-gauge"><div class="gauge-track"><span id="gaugeFill"></span></div><div class="gauge-labels"><span>无新鲜快照</span><span>新鲜占比</span><span>全部新鲜</span></div></div>
+        <dl class="quality-list"><div><dt>行情来源</dt><dd>腾讯公开快照 · 可能延迟</dd></div><div><dt>供应方时间范围</dt><dd id="quoteRange">—</dd></div><div><dt>最近请求尝试</dt><dd id="quoteAttempt">—</dd></div><div><dt>最近取得有效报价</dt><dd id="quoteFetched">尚无成功报价</dd></div></dl>
+        <p class="fine-print">请求成功 ≠ 报价新鲜。时效依据供应方时间与本机时钟，不证明报价准确或可成交；失败会保留旧值并明确标记。</p>
+      </section>
+    </div>
+    <section class="panel scan-panel" id="scan" aria-labelledby="scan-title">
+      <div class="section-head"><div><p class="kicker">04 / DAILY SCAN</p><h2 id="scan-title">最新扫描 <span class="scan-status" id="scanStatus">等待核验</span></h2></div><div class="scan-meta"><span>来源报告</span><b id="reportName">—</b></div></div>
+      <div class="scan-facts"><div><span>扫描时间 · 上海</span><strong id="scanTimeFull">—</strong></div><div><span>数据来源</span><strong id="scanSource">—</strong></div><div><span>市场刹车 · 阈值 ≤−1.5%</span><strong id="brakeState">—</strong></div><div><span>上证日变动</span><strong id="benchmarkDay">—</strong><small>仅该扫描时点，不是实时风控</small></div></div>
+      <div class="scan-charts"><div class="bar-chart"><div class="chart-title">真实形态分布 <small id="distributionTotal">—</small></div><div id="distributionBars"></div></div><div class="bar-chart"><div class="chart-title">未通过项 <small>原因可重叠</small></div><div id="rejectionBars"></div></div></div>
+      <div class="scan-footer"><span>上证 20 日基准 <b id="benchmark20">—</b></span><span>评分 &lt; 70 <b id="scoreReject">—</b></span><span class="rule-callout">质量硬门槛 + 评分≥70；最多 3 只，不凑数</span></div>
+    </section>
+    <section class="panel watch-panel" id="watchlist" aria-labelledby="watch-title">
+      <div class="section-head"><div><p class="kicker">05 / MANUAL WATCHLIST</p><h2 id="watch-title">观察名单 <span class="counter" id="watchCount">—</span></h2></div><div class="watch-controls"><label class="search-box"><span>⌕</span><input id="watchSearch" type="search" placeholder="搜索名称或代码" aria-label="搜索观察名单"></label><select id="groupFilter" aria-label="按组别筛选"><option value="all">全部组别</option></select></div></div>
+      <div class="history-alert"><span>历史人工观察</span><strong id="watchUpdated">—</strong><p>不是本次精选，不复用旧枢轴或旧价格。以下仅是腾讯报价快照，候选资格只认最新日线扫描。</p></div>
+      <p class="fine-print watch-count" id="watchShown">—</p><div id="watchGrid" class="watch-grid"></div>
+    </section>
+    <section class="content-grid paper-grid" id="paper" aria-label="两个独立纸面通道">
+      <section class="panel paper-card"><div class="section-head"><div><p class="kicker">06 / DAILY PAPER</p><h2>日线纸面台账</h2></div><span class="pill pill-neutral">独立模拟</span></div><div class="paper-stats"><div><strong id="dailyPending">—</strong><span>待验证</span></div><div><strong id="dailyOpen">—</strong><span>持仓</span></div><div><strong id="dailyClosed">—</strong><span>已完成</span></div></div><div class="paper-note"><span class="status-dot good"></span><div><strong id="dailyPaperTitle">等待读取</strong><p id="dailyPaperTime">—</p><p>空仓不等于 0% 收益或胜率；本区不是券商账户或真实成交。</p></div></div><div id="dailyPositions" class="position-list"></div></section>
+      <section class="panel paper-card"><div class="section-head"><div><p class="kicker">07 / INTRADAY EXPERIMENT</p><h2>盘中实验</h2></div><span class="pill pill-amber" id="intradayBadge">未核验</span></div><div class="experiment-state"><div class="state-icon">—</div><div><strong id="intradayTitle">等待读取独立实验状态</strong><p id="intradayDetail">没有候选且没有在途模拟持仓时不启动空监控。</p></div></div><div id="intradayPositions" class="position-list"></div><div class="experiment-foot">量速 1.5× 未经可靠分钟级历史验证；与正式日线通道隔离，不代表可成交。</div></section>
+    </section>
+    <section class="panel rules-panel" id="rules" aria-labelledby="rules-title">
+      <div class="section-head"><div><p class="kicker">08 / SYSTEM RULES</p><h2 id="rules-title">规则与风险</h2></div><span class="pill pill-neutral">技术纪律</span></div>
+      <div class="rules-grid">
+        <div class="rule-block"><span class="rule-num">01</span><div><h3>趋势与收缩</h3><p><b>C &gt; MA20 &gt; MA50，MA20 高于 5 日前</b>；信号日前三段 10 日波幅依次收缩，末段 / 首段 ≤0.75，三段均量依次递减。</p></div></div>
+        <div class="rule-block"><span class="rule-num">02</span><div><h3>相对强度与枢轴</h3><p>20 日个股 RS &gt;0；距 20 日枢轴在 ±5%。突破须收盘严格高于枢轴且量比 ≥1.5。申万行业筛选按用户确认跳过。</p></div></div>
+        <div class="rule-block"><span class="rule-num">03</span><div><h3>纯技术止损，不叠加固定比例</h3><p>信号止损参考信号日低点，非信号跟踪参考近 10 个已完成交易日低点；收盘确认，不按盘中插针退出，不叠加 8% / 12% 固定止损。</p></div></div>
+        <div class="rule-block"><span class="rule-num">04</span><div><h3>排程配置 ≠ 实例正在运行</h3><p>工作日 16:30 扫描，09:35 尝试启动盘中纸面监控，每 30 秒轮询。休市、数据不完整或没有合格目标时按原系统安全停止。</p></div></div>
+      </div>
+      <p class="fine-print rule-limits">≥70 分最多精挑 3 只，不足不凑数；评分不是收益概率。固定三段波幅和 MA50 只是可复核的 VCP / 趋势代理，不是完整人工形态或 150/200 日趋势模板。</p>
+    </section>
+    <section class="connection-note" aria-label="刷新限制说明"><strong id="bridgeDetail">部署快照带原始扫描日期，正在尝试只读同步。</strong><p>行情仅在页面打开且联网时每 30 秒尝试获取；浏览器后台可能限频，恢复可见会重新读取。只读状态 API 与本页同源，读取时间仅代表成功同步响应；扫描批次、台账文件和供应方报价分别按各自源时间显示。云端运行环境休眠/停止会影响读取，其他电脑的扫描需先同步至此项目副本。连接失败会明确降级，不会伪造实时数据。</p></section>
+    <footer class="footer"><span>数据同步：<b id="footerBridge">读取中</b></span><span>自动刷新 <b id="countdown">30s</b></span><span>只读研究 · 无后台交易 · 无真实下单</span></footer>
+  </main>
+</div>
+<nav class="bottom-nav" aria-label="移动端导航"><a class="active" href="#overview">总览</a><a href="#market">市场</a><a href="#scan">扫描</a><a href="#watchlist">观察</a><a href="#paper">模拟</a><a href="#rules">规则</a></nav>
+<script src="app.js"></script>
+</body>
+</html>
