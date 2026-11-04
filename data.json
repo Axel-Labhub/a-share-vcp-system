@@ -1,27 +1,27 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-01T13:28:58+08:00",
+  "generated_at": "2026-11-04T16:36:18+08:00",
   "mode": "deployment_snapshot",
   "source_label": "本次部署快照",
   "scan": {
     "status": "ok",
-    "report_name": "VCP自动扫描-2026-10-30-163024.md",
-    "scan_time": "2026-10-30T16:30:00+08:00",
-    "data_date": "2026-10-30",
-    "report_updated_at": "2026-10-30T16:31:55+08:00",
+    "report_name": "VCP自动扫描-2026-11-04-163022.md",
+    "scan_time": "2026-11-04T16:30:00+08:00",
+    "data_date": "2026-11-04",
+    "report_updated_at": "2026-11-04T16:31:55+08:00",
     "source": "腾讯个股前复权日线 / 上证日线",
-    "pool_count": 194,
+    "pool_count": 193,
     "group_count": 29,
     "passed_count": 0,
     "selected_count": 0,
-    "benchmark_20d_pct": -7.44,
-    "benchmark_day_pct": -1.44,
+    "benchmark_20d_pct": -4.06,
+    "benchmark_day_pct": 2.16,
     "market_brake": false,
     "candidates": [],
     "distribution": [
       {
         "name": "回调",
-        "count": 38
+        "count": 71
       },
       {
         "name": "收缩中",
@@ -29,49 +29,49 @@
       },
       {
         "name": "放量突破",
-        "count": 6
-      },
-      {
-        "name": "放量逼近",
         "count": 1
       },
       {
+        "name": "放量逼近",
+        "count": 6
+      },
+      {
         "name": "破位(收盘<MA20)",
-        "count": 139
+        "count": 94
       },
       {
         "name": "突破(量能待确认)",
-        "count": 8
+        "count": 19
       }
     ],
     "rejections": [
       {
         "name": "趋势排列/斜率",
-        "count": 170
+        "count": 166
       },
       {
         "name": "三段顺序收缩",
-        "count": 186
+        "count": 188
       },
       {
         "name": "成交量递减",
-        "count": 167
+        "count": 173
       },
       {
         "name": "个股20日RS非正",
-        "count": 108
+        "count": 91
       },
       {
         "name": "枢轴距离超限",
-        "count": 143
+        "count": 106
       },
       {
         "name": "评分低于70",
-        "count": 194
+        "count": 193
       },
       {
         "name": "突破量能未确认",
-        "count": 8
+        "count": 19
       }
     ],
     "rules_label": "质量硬门槛 + 评分≥70；最多3只，不凑数"
@@ -192,9 +192,9 @@
   },
   "daily_paper": {
     "state_available": true,
-    "state_updated_at": "2026-10-30T16:31:55+08:00",
-    "last_processed_date": "2026-10-30",
-    "last_run_time": "2026-10-30T16:31:00+08:00",
+    "state_updated_at": "2026-11-04T16:31:55+08:00",
+    "last_processed_date": "2026-11-04",
+    "last_run_time": "2026-11-04T16:31:00+08:00",
     "open_count": 0,
     "pending_count": 0,
     "closed_count": 0,
